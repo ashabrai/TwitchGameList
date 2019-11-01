@@ -1,8 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+import GameList from './component/GameList'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import GameImage from './component/GameImages';
+
+function App(){
+  return (
+   <div>
+      <h1> Hi App</h1>
+     <GameList/>
+     </div>
+  )
+}
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
