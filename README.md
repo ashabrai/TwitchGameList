@@ -10,7 +10,7 @@
 - I ended up winning the scholarship without having to submit the challenges. However I still wanted to complete this part of the challenge. 
 - I slightly altered how the data and styling were asked to be shown. So my app does not look exact to the image provided.
 - Built this app using _Create React App_ 
-- For styling Bootstrap
+- For styling Bootstrap & Sass
 
 _Also Twitch updated their response for their games endpoint. The updated endpoint response does not have "viewers" as a property._
 
