@@ -6,13 +6,17 @@
 1.0.0
 
 ### Description 
-- This app was part of a coding challenge. I was asked to build out an app that used the [**Twitch**](https://dev.twitch.tv/docs/) API that made a GET request to their games endpoint. 
-- I ended up winning the scholaship without having to submit my work. I still wanted to complete the challenge. 
-- I slightly altered on how the data and styling were asked to be shown. So my app is not exact with how the styling is displayed. 
+- This app was part of a coding challenge for the CascadiaJS 2019. I was asked to build out an app that used the [**Twitch**](https://dev.twitch.tv/docs/) API that made a GET request to their games endpoint. 
+- I ended up winning the scholarship without having to submit the challenges. However I still wanted to complete this part of the challenge. 
+- I slightly altered how the data and styling were asked to be shown. So my app does not look exact to the image provided.
 - Built this app using _Create React App_ 
 - For styling Bootstrap
 
-_Also Twitch updated thier response for games. The updated endpoint response does not have "viewers" as a property._
+_Also Twitch updated their response for their games endpoint. The updated endpoint response does not have "viewers" as a property._
+
+* Image that was provided from the challenge
+
+![awsimg](./src/lib/awsimg.png)
 
 ### To view this APP on your machine 
 
