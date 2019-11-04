@@ -3,7 +3,6 @@ import api from '../api'
 import Accordion  from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import  Button from 'react-bootstrap/Button';
-// @flow;
 import FormGroup from 'react-bootstrap/FormGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import FormLabel from 'react-bootstrap/FormLabel'
@@ -42,7 +41,6 @@ handleSubmit(event){
 handleClick(event){
   event.preventDefault()
     this.setState({ gameSelected: true});
-    console.log(this.state.gameID)
     }
 
 
@@ -50,7 +48,6 @@ getList(){
    if(this.state.queryValue){
     const fetchData = async () => {
       const result = await api.get(`https://api.twitch.tv/helix/games?name=${this.state.queryValue}`)
-      // console.log(result.data);
       this.setState({gameID: result.data.id});
       let dataArray = result.data.data
       let finalArray = dataArray.map(game => {
@@ -61,20 +58,13 @@ getList(){
           return game;
       })
       this.setState({ games: finalArray})
-      console.log(this.state.games)
     }
     fetchData()
   }
 }
 
-// getStreams(){
-//   if()
-// }
-
 render(){
-  console.log(this.state.games);
   
-
   return (
   <div className='outerWrapper'>
         <Card className="search-container">
@@ -95,7 +85,7 @@ render(){
               </Card.Header>
               
               <Accordion.Collapse eventKey={game}>
-                <Card.Body><img className='game-photo' src={game.box_art_url}/></Card.Body>
+                <Card.Body><img className='game-photo' src={game.box_art_url} alt={game.id}/></Card.Body>
               </Accordion.Collapse>
             </Card>
             ))}
