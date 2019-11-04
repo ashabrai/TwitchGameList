@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import GameList from './component/GameList'
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import GameImage from './component/GameImages';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles/index.scss';
 
 function App(){
   return (
-   <div>
-      <h1> Hi App</h1>
+   <div className="HeaderTitle">
+      <h1> Twitch Game Search</h1>
      <GameList/>
      </div>
   )

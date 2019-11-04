@@ -1,7 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import api from '../api'
-import { Link } from 'react-router-dom'
-
+import Accordion  from 'react-bootstrap/Accordion';
+import Card from 'react-bootstrap/Card';
+import  Button from 'react-bootstrap/Button';
+// @flow;
+import FormGroup from 'react-bootstrap/FormGroup';
+import FormControl from 'react-bootstrap/FormControl';
+import FormLabel from 'react-bootstrap/FormLabel'
+import '../styles/index.scss';
 
 class GameList extends React.Component{
   constructor(props){
@@ -9,7 +15,7 @@ class GameList extends React.Component{
     this.state = {
       games: [],
       queryValue: '',
-      gameID: '',
+      gameID: 0,
       gameSelected: false,
       
     }
@@ -19,7 +25,6 @@ class GameList extends React.Component{
   }
      
   
-
 handleChange(event){
   this.setState({
     queryValue : event.target.value
@@ -31,13 +36,14 @@ handleSubmit(event){
     if(this.state.queryValue){
       this.getList();
     }
+
 }
 
 handleClick(event){
-  event.preventDefault();
+  event.preventDefault()
     this.setState({ gameSelected: true});
-    console.log(this.gameSelected)
-}
+    console.log(this.state.gameID)
+    }
 
 
 getList(){
@@ -45,6 +51,7 @@ getList(){
     const fetchData = async () => {
       const result = await api.get(`https://api.twitch.tv/helix/games?name=${this.state.queryValue}`)
       // console.log(result.data);
+      this.setState({gameID: result.data.id});
       let dataArray = result.data.data
       let finalArray = dataArray.map(game => {
         let newUrl = game.box_art_url
@@ -53,40 +60,48 @@ getList(){
           game.box_art_url = newUrl;
           return game;
       })
-      console.log(finalArray)
-      this.setState({ games: finalArray })
+      this.setState({ games: finalArray})
+      console.log(this.state.games)
     }
     fetchData()
   }
 }
 
+// getStreams(){
+//   if()
+// }
+
 render(){
+  console.log(this.state.games);
+  
 
   return (
   <div className='outerWrapper'>
-        <div className="search-container">
+        <Card className="search-container">
+          <p>Search for your favorite games in the search box below. Click on their name to find out more information about them.</p>
+          <FormGroup className='searchBar'>
           <form onSubmit={this.handleSubmit}>
-            <label>Search:</label>
-            <input type="text" value={this.state.queryValue} onChange={this.handleChange}name="search"></input>
+            <FormLabel className='search-title'>Search:</FormLabel>
+            <FormControl type="text" value={this.state.queryValue} onChange={this.handleChange} name='search'></FormControl>
           </form>
-          </div>
-    <div className='innerWrapper'>
-    <h1>Search games</h1>
-      {this.state.games.map(game => (
-      <div>
-        <li onClick={this.handleClick}>{game.name}</li>
-        </div>
-      ))}
-      {this.state.gameSelected ? (
-          <div>
-             {this.state.games.map(game => (
-               <img className='game-photo' src={game.box_art_url}/>
-             ))} 
-          </div>
-      ) : null }
-    </div>
-
-    </div>
+          </FormGroup>
+          <Accordion className="closedAccordion">
+            {this.state.games.map(game => (
+              <Card className="game-card">
+              <Card.Header>
+                <Accordion.Toggle as={Button} variant="link" eventKey={game} onClick={this.handleClick}>
+                  {game.name}
+                </Accordion.Toggle>
+              </Card.Header>
+              
+              <Accordion.Collapse eventKey={game}>
+                <Card.Body><img className='game-photo' src={game.box_art_url}/></Card.Body>
+              </Accordion.Collapse>
+            </Card>
+            ))}
+</Accordion>
+</Card>
+  </div>
       )
     }
 }

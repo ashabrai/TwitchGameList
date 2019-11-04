@@ -1,0 +1,44 @@
+@import 'custom_bootstrap';
+@import 'bootstrap/scss/bootstrap';
+
+.HeaderTitle{
+    background-color: darkslateblue;
+    color: white;
+    // margin-left: 20px;
+     & h1 {
+        margin-left: 30px;
+    }
+}
+.outerWrapper {
+    width: 100%;
+    height: 600px;
+    background-color: lightgray;
+}
+.closedAccordion{
+    margin-bottom: 20px;
+}
+.search-container {
+    margin: 0 auto;
+    width: 750px;
+    display: inline-block;
+    & p{
+        margin-left: 30px;
+        color: black;
+    }
+}
+
+.game-card {
+    margin: 0 auto;
+    width: 350px;
+    display: inline-block;
+}
+.search-title {
+    color: black;
+
+}
+.searchBar{
+    width: 300px;
+    margin: 0 auto;
+}
+
+
